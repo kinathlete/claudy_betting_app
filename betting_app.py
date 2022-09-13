@@ -2,13 +2,13 @@ import streamlit as st
 
 st.title('BET ON FIFA WORLD CUP 2022!')
 
-st.header('6 users have already signed-up.')
+st.header('Bets are going to be accepted soon.')
 
-st.subheader('1 Submit your bets.')
-st.subheader('2 Watch how you perform.')
-st.subheader('3 Compete with others.')
+st.text('1 Submit your bets.')
+st.text('2 Watch how you perform.')
+st.text('3 Compete with others.')
 
-st.subheader('Starting on NOVEMBER 20 2022 in QATAR!')
+st.text('Starting on NOVEMBER 20 2022 in QATAR!')
 
 htp7 = "https://storage.cloud.google.com/fifa2022-betting-app-images/world-cup-2022-groups.jpeg"
 st.image(htp7, caption='Groups of FIFA World Cup 2022')
