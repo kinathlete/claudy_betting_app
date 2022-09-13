@@ -1,14 +1,18 @@
-import streamlit
+import streamlit as st
 
-streamlit.title('BET ON FIFA WORLD CUP 2022!')
+st.title('BET ON FIFA WORLD CUP 2022!')
 
-streamlit.header('XXX users have already signed-up.')
+my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 
-streamlit.header('1 Submit your bets.')
-streamlit.header('2 Watch how you perform.')
-streamlit.header('3 Compete with others.')
+st.header('6 users have already signed-up.')
 
-streamlit.header('Starting soon!')
+st.header('1 Submit your bets.')
+st.header('2 Watch how you perform.')
+st.header('3 Compete with others.')
+
+st.header('Starting soon!')
+
+st.image(https://storage.cloud.google.com/fifa2022-betting-app-images/world-cup-2022-groups.jpeg, caption='Groups of World Cup 2022')
 
 
 
