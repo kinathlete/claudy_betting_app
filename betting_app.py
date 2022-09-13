@@ -8,10 +8,10 @@ st.header('1 Submit your bets.')
 st.header('2 Watch how you perform.')
 st.header('3 Compete with others.')
 
-st.header('Starting soon!')
+st.header('Starting on NOVEMBER 20 2022 in QATAR!')
 
 htp7 = "https://storage.cloud.google.com/fifa2022-betting-app-images/world-cup-2022-groups.jpeg"
-st.image(htp7, caption='Groups of World Cup 2022')
+st.image(htp7, caption='Groups of FIFA World Cup 2022')
 
 
 
