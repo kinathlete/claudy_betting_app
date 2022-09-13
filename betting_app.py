@@ -2,8 +2,6 @@ import streamlit as st
 
 st.title('BET ON FIFA WORLD CUP 2022!')
 
-my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-
 st.header('6 users have already signed-up.')
 
 st.header('1 Submit your bets.')
