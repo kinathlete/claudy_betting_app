@@ -4,9 +4,9 @@ st.title('BET ON FIFA WORLD CUP 2022!')
 
 st.header('6 users have already signed-up.')
 
-st.header('1 Submit your bets.')
-st.header('2 Watch how you perform.')
-st.header('3 Compete with others.')
+st.subheader('1 Submit your bets.')
+st.subheader('2 Watch how you perform.')
+st.subheader('3 Compete with others.')
 
 st.header('Starting on NOVEMBER 20 2022 in QATAR!')
 
