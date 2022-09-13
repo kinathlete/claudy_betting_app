@@ -10,8 +10,8 @@ st.text('3 Compete with others.')
 
 st.text('Starting on NOVEMBER 20 2022 in QATAR!')
 
-htp1 = "https://storage.googleapis.com/fifa2022-betting-app-images/world-cup-2022-groups.jpeg"
-st.image(htp1, caption='Groups of FIFA World Cup 2022')
+htp1 = "https://storage.googleapis.com/fifa2022-betting-app-images/fifa-world-cup-2022-groups.jpeg"
+st.image(htp1, caption='Groups of FIFA World Cup 2022 | Source: sportco.io')
 
 st.subheader('Brought to you by Claudy Consulting.')
 
