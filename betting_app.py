@@ -12,7 +12,8 @@ st.header('3 Compete with others.')
 
 st.header('Starting soon!')
 
-st.image(https://storage.cloud.google.com/fifa2022-betting-app-images/world-cup-2022-groups.jpeg, caption='Groups of World Cup 2022')
+htp7 = "https://storage.cloud.google.com/fifa2022-betting-app-images/world-cup-2022-groups.jpeg"
+st.image(htp7, caption='Groups of World Cup 2022')
 
 
 
