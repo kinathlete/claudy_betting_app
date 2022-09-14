@@ -19,8 +19,8 @@ st.image(htp1, caption='Groups of FIFA World Cup 2022 | Source: sportco.io')
 def get_fixtures(round):
     with my_cnx.cursor() as my_cur:
         fixtures = my_cur.execute("select * from fifa_world_cup_2022 \
-            where league_round = '" + round + "';").fetch_pandas_all()
-        return fixtures
+            where league_round = '" + round + "';")
+        return my_cur.fetchall()
 
 # Listing all fixtures of the current round depending on current date
 if st.button('First Round Bets'):
