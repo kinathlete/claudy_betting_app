@@ -1,8 +1,10 @@
 import streamlit as st
+import snowflake.connector as cnx
+import pandas as pd
 
 st.title('BET ON FIFA WORLD CUP 2022!')
 
-st.header('Bets are going to be accepted soon.')
+st.header('Bets are accepted now. Scroll down to submit your bets.')
 
 st.text('1 Submit your bets.')
 st.text('2 Watch how you perform.')
@@ -12,6 +14,21 @@ st.text('Starting on NOVEMBER 20 2022 in QATAR!')
 
 htp1 = "https://storage.googleapis.com/fifa2022-betting-app-images/fifa-world-cup-2022-groups.jpeg"
 st.image(htp1, caption='Groups of FIFA World Cup 2022 | Source: sportco.io')
+
+# Give fixtures for a given round
+def get_fixtures(round):
+    with my_cnx.cursor() as my_cur:
+        group_stage_1 = my_cur.execute("select * from fifa_world_cup_2022 \
+            where league_round = '" + round + "';")
+        return my_cur.fetchall()
+
+# Listing all fixtures of the current round depending on current date
+if st.button('Load Group Stage 1'):
+    my_cnx = cnx.connect(**st.secrets["snowflake"])
+    fixtures = pd.DataFrame(get_fixtures('Group Stage - 1'))
+    my_cnx.close()
+    st.dataframe(fixtures)
+
 
 st.subheader('Brought to you by Claudy Consulting.')
 
