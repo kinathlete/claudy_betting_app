@@ -27,7 +27,7 @@ if st.button('First Round Bets'):
     my_cnx = cnx.connect(**st.secrets["snowflake"])
     fixtures, columns = get_fixtures('Group Stage - 1')
     first_round_fixtures = pd.DataFrame(fixtures, columns=columns)
-    st.dataframe(fixtures)
+    st.dataframe(first_round_fixtures)
     my_cnx.close()
     # container for round 1 games
     # with st.container():
