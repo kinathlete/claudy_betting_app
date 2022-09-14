@@ -20,13 +20,13 @@ def get_fixtures(round):
     with my_cnx.cursor() as my_cur:
         group_stage_1 = my_cur.execute("select * from fifa_world_cup_2022 \
             where league_round = '" + round + "';")
-        return my_cur.fetchall(), my_cur.description
+        return my_cur.fetchall(), my_cur.description[0]
 
 # Listing all fixtures of the current round depending on current date
 if st.button('First Round Bets'):
     my_cnx = cnx.connect(**st.secrets["snowflake"])
     fixtures, columns = get_fixtures('Group Stage - 1')
-    first_round_fixtures = pd.DataFrame(fixtures, columns=columns[0])
+    first_round_fixtures = pd.DataFrame(fixtures, columns=columns)
     st.dataframe(first_round_fixtures)
     my_cnx.close()
     # container for round 1 games
