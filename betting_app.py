@@ -37,23 +37,23 @@ if st.button('First Round Bets'):
         for index, row in fixtures.iterrows():
             with date:
                 st.write('')
-                st.write(row['FIXTURE_DATE'][0:9])
                 st.write('')
+                st.write(row['FIXTURE_DATE'][0:9])
             with home_team:
+                st.write('')
                 st.write('')
                 st.markdown('<p align="center">'+row['TEAMS_HOME_NAME']+'</p>'\
                     , unsafe_allow_html=True)
-                st.write('')
             with colon:
+                st.write('')
                 st.write('')
                 st.markdown('<p align="center">:</p>'\
                     , unsafe_allow_html=True)
-                st.write('')
             with away_team:
+                st.write('')
                 st.write('')
                 st.markdown('<p align="center">'+row['TEAMS_AWAY_NAME']+'</p>'\
                     , unsafe_allow_html=True)
-                st.write('')
             with user_bet:
                 st.text_input('',max_chars=3,key=row['FIXTURE_ID'], placeholder='2:1')
 
