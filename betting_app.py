@@ -43,8 +43,8 @@ def get_fixtures(round):
 # Get Groups
 def get_group(home_team):
     with my_cnx.cursor() as my_cur:
-        group = my_cur.execute(f"select group from groups \
-            where team = '{home_team}';").fetchall()
+        group = my_cur.execute(f"""select "group" from groups \
+            where team = '{home_team}';""").fetchall()
         return home_team
 
 # Listing all fixtures of the current round depending on current date
@@ -60,7 +60,7 @@ if st.button('Start Betting'):
             with date:
                 st.write(row['FIXTURE_DATE'][0:10])
             with group:
-                # st.write(get_group(row['TEAMS_HOME_NAME']))
+                st.write(get_group(row['TEAMS_HOME_NAME']))
             with home_team:
                 st.markdown('<p align="center">'+row['TEAMS_HOME_NAME']+'</p>'\
                     , unsafe_allow_html=True)
