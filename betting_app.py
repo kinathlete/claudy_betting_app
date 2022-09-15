@@ -44,7 +44,7 @@ def get_fixtures(round):
 if st.button('Start Betting'):
     my_cnx = cnx.connect(**st.secrets["snowflake"])
     # user_id = create_user(username)
-    fixtures = get_fixtures('Group Stage - 1').reset_index()
+    fixtures = get_fixtures('Group Stage - 1')
     # st.dataframe(fixtures)
     my_cnx.close()
     # container for round 1 games
