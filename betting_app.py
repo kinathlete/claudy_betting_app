@@ -48,7 +48,7 @@ if st.button('Start Betting'):
     my_cnx.close()
     # container for round 1 games
     with st.container():
-        date, home_team, colon, away_team, user_bet = st.columns([1,2,1,2,3])
+        date, home_team, colon, away_team, user_bet = st.columns([2,2,1,2,3])
         for index, row in fixtures.iterrows():
             with date:
                 st.write(row['FIXTURE_DATE'][0:9])
