@@ -47,7 +47,7 @@ if st.button('First Round Bets'):
                 st.markdown('<p align="center">'+row['TEAMS_AWAY_NAME']+'</p>'\
                     , unsafe_allow_html=True)
             with user_bet:
-                st.text_input(max_chars=3,key=row['FIXTURE_ID'], placeholder='2:1')
+                st.text_input('',max_chars=3,key=row['FIXTURE_ID'], placeholder='2:1')
 
 
 st.subheader('Brought to you by Claudy Consulting.')
