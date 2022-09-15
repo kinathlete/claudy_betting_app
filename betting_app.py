@@ -60,7 +60,7 @@ if st.button('Start Betting'):
             with date:
                 st.write(row['FIXTURE_DATE'][0:10])
             with group:
-                st.write(get_group(row['TEAMS_HOME_NAME']))
+                st.write(get_group(row['TEAMS_HOME_NAME'])['group'])
             with home_team:
                 st.markdown('<p align="center">'+row['TEAMS_HOME_NAME']+'</p>'\
                     , unsafe_allow_html=True)
