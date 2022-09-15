@@ -36,13 +36,13 @@ if st.button('First Round Bets'):
         date, home_team, colon, away_team, user_bet = st.columns(5)
         for index, row in fixtures.iterrows():
             with date:
-                st.write(row['FIXTURE_DATE'])
+                st.write(row['FIXTURE_DATE'][0:9])
             with home_team:
                 st.write(row['TEAMS_HOME_NAME'])
             with colon:
                 st.write(':')
             with away_team:
-                st.write('TEAMS_AWAY_NAME')
+                st.write(row['TEAMS_AWAY_NAME'])
             with user_bet:
                 st.write('User Bet')
 
