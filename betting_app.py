@@ -41,11 +41,13 @@ if st.button('First Round Bets'):
                 st.markdown('<p align="center">'+row['TEAMS_HOME_NAME']+'</p>'\
                     , unsafe_allow_html=True)
             with colon:
-                st.write(':')
+                st.markdown('<p align="center">:</p>'\
+                    , unsafe_allow_html=True)
             with away_team:
-                st.write(row['TEAMS_AWAY_NAME'])
+                st.markdown('<p align="center">'+row['TEAMS_AWAY_NAME']+'</p>'\
+                    , unsafe_allow_html=True)
             with user_bet:
-                st.write('User Bet')
+                st.text_input(max_chars=3,key=row['FIXTURE_ID'], placeholder='2:1')
 
 
 st.subheader('Brought to you by Claudy Consulting.')
