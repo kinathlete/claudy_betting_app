@@ -33,7 +33,7 @@ if st.button('First Round Bets'):
     my_cnx.close()
     # container for round 1 games
     with st.container():
-        date, home_team, colon, away_team, user_bet = st.columns(5, "medium")
+        date, home_team, colon, away_team, user_bet = st.columns(5)
         for f in fixtures:
             with date:
                 st.subheader(fixtures["fixture_date"])
