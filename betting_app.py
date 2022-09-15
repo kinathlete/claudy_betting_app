@@ -50,7 +50,7 @@ def get_group(home_team):
 # Listing all fixtures of the current round depending on current date
 if st.button('Start Betting'):
     my_cnx = cnx.connect(**st.secrets["snowflake"])
-    # user_id = create_user(username)
+    user_id = create_user(username)
     fixtures = get_fixtures('Group Stage - 1')
     # st.dataframe(fixtures)
     # container for round 1 games
