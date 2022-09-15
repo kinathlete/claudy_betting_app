@@ -6,14 +6,17 @@ st.title('BET ON FIFA WORLD CUP 2022!')
 
 st.info('Bets are accepted now. Scroll down to submit your bets.')
 
+st.header('Starting on NOVEMBER 20 2022 in QATAR!')
+
+htp1 = "https://storage.googleapis.com/fifa2022-betting-app-images/fifa-world-cup-2022-groups.jpeg"
+st.image(htp1, caption='Groups of FIFA World Cup 2022 | Source: sportco.io')
+
 st.text('1 Submit your bets.')
 st.text('2 Watch how you perform.')
 st.text('3 Compete with others.')
 
-st.text('Starting on NOVEMBER 20 2022 in QATAR!')
-
-htp1 = "https://storage.googleapis.com/fifa2022-betting-app-images/fifa-world-cup-2022-groups.jpeg"
-st.image(htp1, caption='Groups of FIFA World Cup 2022 | Source: sportco.io')
+st.write('The rules are:')
+st.write('5 points for the correct World Cup Winner!')
 
 # Give fixtures for a given round
 def get_fixtures(round):
