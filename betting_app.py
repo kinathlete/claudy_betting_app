@@ -38,9 +38,11 @@ if st.button('First Round Bets'):
             with date:
                 st.write(row['FIXTURE_DATE'][0:9])
             with home_team:
-                st.write(row['TEAMS_HOME_NAME'])
+                st.markdown(f'<p align="center">\
+                    // {row['TEAMS_HOME_NAME']}\
+                        </p>', unsafe_allow_html=True)
             with colon:
-                st.write('   :')
+                st.write(':')
             with away_team:
                 st.write(row['TEAMS_AWAY_NAME'])
             with user_bet:
