@@ -25,10 +25,10 @@ email = st.text_input('Your Email', max_chars=100)
 # Create user in Snowflake
 def create_user(username):
     with my_cnx.cursor() as my_cur:
-        my_cur.execute(f"insert into users values ({username},{email});")
+        my_cur.execute(f"insert into users values ('{username}','{email}');")
         user_id = my_cur.execute(f"select id from users\
-            where username = {username}\
-                and email = {email};")
+            where username = '{username}'\
+                and email = '{email}';")
         return user_id
 
 # Give fixtures for a given round
