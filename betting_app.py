@@ -37,7 +37,7 @@ def get_fixtures(round):
     with my_cnx.cursor() as my_cur:
         fixtures = my_cur.execute(f"select * from fifa_world_cup_2022 \
             where league_round = '{round}' \
-                order by fixture_id asc;").fetch_pandas_all()
+                order by fixture_date asc;").fetch_pandas_all()
         return fixtures
 
 # Listing all fixtures of the current round depending on current date
