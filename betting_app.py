@@ -40,19 +40,27 @@ def get_fixtures(round):
                 order by fixture_date asc;").fetch_pandas_all()
         return fixtures
 
+# Get Groups
+def get_group(home_team):
+    with my_cnx.cursor() as my_cur:
+        group = my_cur.execute(f"select group from groups \
+            where team = '{home_team}';").fetchall()
+        return home_team
+
 # Listing all fixtures of the current round depending on current date
 if st.button('Start Betting'):
     my_cnx = cnx.connect(**st.secrets["snowflake"])
     # user_id = create_user(username)
     fixtures = get_fixtures('Group Stage - 1')
     # st.dataframe(fixtures)
-    my_cnx.close()
     # container for round 1 games
     with st.container():
-        date, home_team, colon, away_team, user_bet = st.columns([2,2,1,2,3])
+        date, group, home_team, colon, away_team, user_bet = st.columns([2,2,2,1,2,3])
         for index, row in fixtures.iterrows():
             with date:
                 st.write(row['FIXTURE_DATE'][0:10])
+            with group:
+                st.write(get_group(row['TEAMS_HOME_NAME']))
             with home_team:
                 st.markdown('<p align="center">'+row['TEAMS_HOME_NAME']+'</p>'\
                     , unsafe_allow_html=True)
@@ -64,6 +72,7 @@ if st.button('Start Betting'):
                     , unsafe_allow_html=True)
             with user_bet:
                 st.write('User Bet')
+    my_cnx.close()
 
 # Checking user bets
 if st.button('Check my Bets'):
