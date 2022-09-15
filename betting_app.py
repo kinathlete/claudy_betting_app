@@ -40,7 +40,7 @@ if st.button('First Round Bets'):
             with home_team:
                 st.write(row['TEAMS_HOME_NAME'])
             with colon:
-                st.write(':')
+                st.write('   :')
             with away_team:
                 st.write(row['TEAMS_AWAY_NAME'])
             with user_bet:
