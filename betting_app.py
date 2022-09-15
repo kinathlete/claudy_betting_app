@@ -36,18 +36,18 @@ if st.button('First Round Bets'):
         date, home_team, colon, away_team, user_bet = st.columns(5)
         for index, row in fixtures.iterrows():
             with date:
-                st.markdown('####')
+                st.markdown('###')
                 st.write(row['FIXTURE_DATE'][0:9])
             with home_team:
-                st.markdown('####')
+                st.markdown('###')
                 st.markdown('<p align="center">'+row['TEAMS_HOME_NAME']+'</p>'\
                     , unsafe_allow_html=True)
             with colon:
-                st.markdown('####')
+                st.markdown('###')
                 st.markdown('<p align="center">:</p>'\
                     , unsafe_allow_html=True)
             with away_team:
-                st.markdown('####')
+                st.markdown('###')
                 st.markdown('<p align="center">'+row['TEAMS_AWAY_NAME']+'</p>'\
                     , unsafe_allow_html=True)
             with user_bet:
