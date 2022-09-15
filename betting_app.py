@@ -44,7 +44,7 @@ def get_fixtures(round):
 def get_group(home_team):
     with my_cnx.cursor() as my_cur:
         group = my_cur.execute(f"""select "group" from groups \
-            where team = '{home_team}';""").fetchall()
+            where team = '{home_team}';""").fetch_pandas_all()
         return group
 
 # Listing all fixtures of the current round depending on current date
