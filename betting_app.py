@@ -4,7 +4,7 @@ import pandas as pd
 
 st.title('BET ON FIFA WORLD CUP 2022!')
 
-st.header('Bets are accepted now. Scroll down to submit your bets.')
+st.info('Bets are accepted now. Scroll down to submit your bets.')
 
 st.text('1 Submit your bets.')
 st.text('2 Watch how you perform.')
