@@ -36,7 +36,7 @@ if st.button('First Round Bets'):
         date, home_team, colon, away_team, user_bet = st.columns(5)
         for f in fixtures:
             with date:
-                st.subheader(fixtures["fixture_date"])
+                st.subheader(fixtures['fixture_date'])
 
 
 st.subheader('Brought to you by Claudy Consulting.')
