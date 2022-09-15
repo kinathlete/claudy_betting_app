@@ -35,8 +35,9 @@ def create_user(username):
 # Give fixtures for a given round
 def get_fixtures(round):
     with my_cnx.cursor() as my_cur:
-        fixtures = my_cur.execute("select * from fifa_world_cup_2022 \
-            where league_round = '" + round + "';").fetch_pandas_all()
+        fixtures = my_cur.execute(f"select * from fifa_world_cup_2022 \
+            where league_round = '{round}' \
+                order by fixture_id asc;").fetch_pandas_all()
         return fixtures
 
 # Listing all fixtures of the current round depending on current date
@@ -51,7 +52,7 @@ if st.button('Start Betting'):
         date, home_team, colon, away_team, user_bet = st.columns([2,2,1,2,3])
         for index, row in fixtures.iterrows():
             with date:
-                st.write(row['FIXTURE_DATE'][0:9])
+                st.write(row['FIXTURE_DATE'][0:10])
             with home_team:
                 st.markdown('<p align="center">'+row['TEAMS_HOME_NAME']+'</p>'\
                     , unsafe_allow_html=True)
