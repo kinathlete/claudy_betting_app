@@ -11,12 +11,12 @@ st.header('Starting on NOVEMBER 20 2022 in QATAR!')
 htp1 = "https://storage.googleapis.com/fifa2022-betting-app-images/fifa-world-cup-2022-groups.jpeg"
 st.image(htp1, caption='Groups of FIFA World Cup 2022 | Source: sportco.io')
 
-st.text('1 Submit your bets.')
-st.text('2 Watch how you perform.')
-st.text('3 Compete with others.')
+st.write('1 Submit your bets.')
+st.write('2 Watch how you perform.')
+st.write('3 Compete with others.')
 
-st.write('The rules are:')
-st.write('5 points for the correct World Cup Winner!')
+st.text('The rules are:')
+st.text('5 points for the correct World Cup Winner!')
 
 # Give fixtures for a given round
 def get_fixtures(round):
@@ -32,11 +32,11 @@ if st.button('First Round Bets'):
     st.dataframe(fixtures)
     my_cnx.close()
     # container for round 1 games
-    # with st.container():
-    #     date, home_team, colon, away_team, user_bet = st.columns(5, "medium")
-    #     for f in fixtures:
-    #         with date:
-    #             st.subheader()
+    with st.container():
+        date, home_team, colon, away_team, user_bet = st.columns(5, "medium")
+        for f in fixtures:
+            with date:
+                st.subheader(fixtures["fixture_date"])
 
 
 st.subheader('Brought to you by Claudy Consulting.')
