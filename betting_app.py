@@ -28,15 +28,15 @@ def get_fixtures(round):
 # Listing all fixtures of the current round depending on current date
 if st.button('First Round Bets'):
     my_cnx = cnx.connect(**st.secrets["snowflake"])
-    fixtures = get_fixtures('Group Stage - 1')
+    fixtures = get_fixtures('Group Stage - 1').reset_index()
     st.dataframe(fixtures)
     my_cnx.close()
     # container for round 1 games
     with st.container():
         date, home_team, colon, away_team, user_bet = st.columns(5)
-        for f in fixtures:
+        for index, row in fixtures.iterrows():
             with date:
-                st.subheader(fixtures['FIXTURE_DATE'])
+                st.subheader(row['FIXTURE_DATE'])
 
 
 st.subheader('Brought to you by Claudy Consulting.')
