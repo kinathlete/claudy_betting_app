@@ -2,9 +2,9 @@ import streamlit as st
 import snowflake.connector as cnx
 import pandas as pd
 
-st.title('BET ON FIFA WORLD CUP 2022!')
+st.title('PREDICT ON FIFA WORLD CUP 2022!')
 
-st.info('Bets are accepted now. Scroll down to submit your bets.')
+st.info('Predictions are accepted now. Scroll down to submit your predictions.')
 
 st.header('Starting on NOVEMBER 20 2022 in QATAR!')
 
@@ -48,7 +48,7 @@ def get_group(home_team):
         return group
 
 # Listing all fixtures of the current round depending on current date
-if st.button('Start Betting'):
+if st.button('Submit New Predictions'):
     my_cnx = cnx.connect(**st.secrets["snowflake"])
     user_id = create_user(username)
     fixtures = get_fixtures('Group Stage - 1')
@@ -71,11 +71,11 @@ if st.button('Start Betting'):
                 st.markdown('<p align="center">'+row['TEAMS_AWAY_NAME']+'</p>'\
                     , unsafe_allow_html=True)
             with user_bet:
-                st.write('User Bet')
+                st.write('User prediction')
     my_cnx.close()
 
 # Checking user bets
-if st.button('Check my Bets'):
+if st.button('Show my Predictions'):
     st.write('Your bets are going to be displayed here if there are any.')
 
 
