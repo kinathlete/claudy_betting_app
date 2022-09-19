@@ -60,9 +60,11 @@ if st.button('Submit New Predictions'):
             with date:
                 st.text(row['FIXTURE_DATE'][0:10])
                 st.text(" ")
+                st.text(" ")
             with group:
                 group_text = get_group(row['TEAMS_HOME_NAME'])
                 st.text('Group ' + group_text['group'].iloc[0])
+                st.text(" ")
                 st.text(" ")
             with home_team:
                 # st.markdown('<p align="center">'+row['TEAMS_HOME_NAME']+'</p>'\
@@ -71,6 +73,8 @@ if st.button('Submit New Predictions'):
             with colon:
                 st.markdown('<p align="center">:</p>'\
                     , unsafe_allow_html=True)
+                st.text(" ")
+                st.text(" ")
             with away_team:
                 # st.markdown('<p align="center">'+row['TEAMS_AWAY_NAME']+'</p>'\
                 #     , unsafe_allow_html=True)
