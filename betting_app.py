@@ -61,7 +61,7 @@ if st.button('Submit New Predictions'):
                 st.write(row['FIXTURE_DATE'][0:10])
             with group:
                 group_text = get_group(row['TEAMS_HOME_NAME'])
-                st.write('Group ' + group_text['group'])
+                st.write('Group ' + get_group(row['TEAMS_HOME_NAME']).iloc[0])
             with home_team:
                 st.markdown('<p align="center">'+row['TEAMS_HOME_NAME']+'</p>'\
                     , unsafe_allow_html=True)
