@@ -6,7 +6,7 @@ st.title('PREDICT ON FIFA WORLD CUP 2022!')
 
 st.info('Predictions are accepted now. Scroll down to submit your predictions.')
 
-st.header('Starting on NOVEMBER 20 2022 in QATAR!')
+st.header('Starting 20 NOVEMBER 2022 in QATAR!')
 
 htp1 = "https://storage.googleapis.com/fifa2022-betting-app-images/fifa-world-cup-2022-groups.jpeg"
 st.image(htp1, caption='Groups of FIFA World Cup 2022 | Source: sportco.io')
@@ -60,7 +60,8 @@ if st.button('Submit New Predictions'):
             with date:
                 st.write(row['FIXTURE_DATE'][0:10])
             with group:
-                st.write(get_group(row['TEAMS_HOME_NAME'])['group'])
+                group = get_group(row['TEAMS_HOME_NAME']
+                st.write(group['group'])
             with home_team:
                 st.markdown('<p align="center">'+row['TEAMS_HOME_NAME']+'</p>'\
                     , unsafe_allow_html=True)
