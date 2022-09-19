@@ -74,7 +74,7 @@ if st.button('Submit New Predictions'):
             with away_team:
                 # st.markdown('<p align="center">'+row['TEAMS_AWAY_NAME']+'</p>'\
                 #     , unsafe_allow_html=True)
-                st.number_input(row['TEAMS_AWAY_NAME'], min_value=0, max_value=15, value=int, step=1)
+                st.number_input(row['TEAMS_AWAY_NAME'], min_value=0, max_value=15, step=1)
     my_cnx.close()
 
 # Checking user bets
