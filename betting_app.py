@@ -55,13 +55,13 @@ if st.button('Submit New Predictions'):
     # st.dataframe(fixtures)
     # container for round 1 games
     with st.container():
+        date, group, home_team, colon, away_team= st.columns([2,2,2,1,2])
         for index, row in fixtures.iterrows():
             date = row['FIXTURE_DATE'][0:10]
-            group = "GROUP " + get_group(row['TEAMS_HOME_NAME'])
+            group = "GROUP " + get_group(row['TEAMS_HOME_NAME'])['group'].iloc[0]
             home_team = row['TEAMS_HOME_NAME']
             away_team = row['TEAMS_AWAY_NAME']
             # user prediction
-            st.text_input(f"{date} | {group} -- {home_team} : {away_team}")
     my_cnx.close()
 
 # Checking user bets
