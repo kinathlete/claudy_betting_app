@@ -55,24 +55,26 @@ if st.button('Submit New Predictions'):
     # st.dataframe(fixtures)
     # container for round 1 games
     with st.container():
-        date, group, home_team, colon, away_team, user_bet = st.columns([2,2,2,1,2,3])
+        date, group, home_team, colon, away_team= st.columns([2,2,2,1,2])
         for index, row in fixtures.iterrows():
             with date:
-                st.write(row['FIXTURE_DATE'][0:10])
+                st.text(row['FIXTURE_DATE'][0:10])
+                st.text(" ")
             with group:
                 group_text = get_group(row['TEAMS_HOME_NAME'])
-                st.write('Group ' + group_text['group'].iloc[0])
+                st.text('Group ' + group_text['group'].iloc[0])
+                st.text(" ")
             with home_team:
-                st.markdown('<p align="center">'+row['TEAMS_HOME_NAME']+'</p>'\
-                    , unsafe_allow_html=True)
+                # st.markdown('<p align="center">'+row['TEAMS_HOME_NAME']+'</p>'\
+                #     , unsafe_allow_html=True)
+                st.number_input(row['TEAMS_HOME_NAME'], min_value=0, max_value=15, value=int, step=1)
             with colon:
                 st.markdown('<p align="center">:</p>'\
                     , unsafe_allow_html=True)
             with away_team:
-                st.markdown('<p align="center">'+row['TEAMS_AWAY_NAME']+'</p>'\
-                    , unsafe_allow_html=True)
-            with user_bet:
-                st.write('User prediction')
+                # st.markdown('<p align="center">'+row['TEAMS_AWAY_NAME']+'</p>'\
+                #     , unsafe_allow_html=True)
+                st.number_input(row['TEAMS_AWAY_NAME'], min_value=0, max_value=15, value=int, step=1)
     my_cnx.close()
 
 # Checking user bets
