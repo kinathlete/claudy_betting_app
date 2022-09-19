@@ -62,6 +62,8 @@ if st.button('Submit New Predictions'):
             home_team = row['TEAMS_HOME_NAME']
             away_team = row['TEAMS_AWAY_NAME']
             # user prediction
+            st.text_input(f"{date} | {group} -- {home_team} : {away_team}")
+            
     my_cnx.close()
 
 # Checking user bets
