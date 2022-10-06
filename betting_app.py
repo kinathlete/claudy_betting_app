@@ -48,42 +48,32 @@ def get_group(home_team):
             where team = '{home_team}';""").fetch_pandas_all()
         return group
 
-# Check user
-def check_user(username, email):
-    with my_cnx.cursor() as my_cur:
-        user = my_cur.execute(f"select * from users where username = '{username}' and email = '{email}'").fetch_pandas_all()
-        return user
+# Listing all fixtures of the current round depending on current date
+if st.button('Submit New Predictions'):
+    my_cnx = cnx.connect(**st.secrets["snowflake"])
+    user_id = create_user(username)
+    fixtures = get_fixtures('Group Stage - 1')
+    # st.dataframe(fixtures)
+    # container for round 1 games
+    with st.container():
+        date, group, home_team, colon, away_team= st.columns([2,2,2,1,2])
+        for index, row in fixtures.iterrows():
+            date = row['FIXTURE_DATE'][0:10]
+            group = "GROUP " + get_group(row['TEAMS_HOME_NAME'])['group'].iloc[0]
+            home_team = row['TEAMS_HOME_NAME']
+            away_team = row['TEAMS_AWAY_NAME']
+            # user prediction
+            st.text_input(f"{date} | {group} -- {home_team} : {away_team}")
 
-if username and email:
-    st.write(check_user(username, email))
+    my_cnx.close()
 
-
-# # Listing all fixtures of the current round depending on current date
-# if st.button('Submit New Predictions'):
-#     my_cnx = cnx.connect(**st.secrets["snowflake"])
-#     user_id = create_user(username)
-#     fixtures = get_fixtures('Group Stage - 1')
-#     # st.dataframe(fixtures)
-#     # container for round 1 games
-#     with st.container():
-#         date, group, home_team, colon, away_team= st.columns([2,2,2,1,2])
-#         for index, row in fixtures.iterrows():
-#             date = row['FIXTURE_DATE'][0:10]
-#             group = "GROUP " + get_group(row['TEAMS_HOME_NAME'])['group'].iloc[0]
-#             home_team = row['TEAMS_HOME_NAME']
-#             away_team = row['TEAMS_AWAY_NAME']
-#             # user prediction
-#             st.text_input(f"{date} | {group} -- {home_team} : {away_team}")
-
-#     my_cnx.close()
-
-# # Checking user bets
-# if st.button('Show my Predictions'):
-#     st.write('Your bets are going to be displayed here if there are any.')
+# Checking user bets
+if st.button('Show my Predictions'):
+    st.write('Your bets are going to be displayed here if there are any.')
 
 
-# st.subheader('Brought to you by Claudy Consulting.')
+st.subheader('Brought to you by Claudy Consulting.')
 
-# htp2 = "https://storage.googleapis.com/fifa2022-betting-app-images/Claudy_Logo_PRIME_neg_RGB.png"
-# st.image(htp2, width=100)
+htp2 = "https://storage.googleapis.com/fifa2022-betting-app-images/Claudy_Logo_PRIME_neg_RGB.png"
+st.image(htp2, width=100)
 
