@@ -49,29 +49,55 @@ def get_fixtures(round):
                                     order by a.fixture_date asc;").fetch_pandas_all()
         return fixtures
 
-# Get Groups
-def get_group(home_team):
+# Insert prediction
+def insert_prediction(user_id, fixture_id, p_home, p_away):
     with my_cnx.cursor() as my_cur:
-        group = my_cur.execute(f"""select "group" from groups \
-            where team = '{home_team}';""").fetch_pandas_all()
-        return group
+
+        new_entry = ''
+        existing_prediction = my_cur.execute(f"select id from user_predictions_results\
+            where user_id = {user_id} and fixture_id = {fixture_id};")
+        if existing_prediction:
+            my_cur.execute(f"update user_predictions_results\
+                set home_goals = {p_home} and away_goals = {p_away}\
+                    where user_id = {user_id} and fixture_id = {fixture_id} ;")
+        else:
+            my_cur.execute(f"insert into user_predictions_results \
+                values ('{user_id}', '{fixture_id}', '{p_home}', '{p_away}');")
+        # check if prediction exists in db now
+        new_entry = my_cur.execute(f"select id from user_predictions_results\
+            where user_id = {user_id} and fixture_id = {fixture_id};")
+        return new_entry
 
 # Listing all fixtures of the current round depending on current date
-if st.button('Submit New Predictions'):
+if st.button('Make New Predictions'):
     my_cnx = cnx.connect(**st.secrets["snowflake"])
     user_id = create_user(username, email)
     fixtures = get_fixtures('Group Stage - 1')
     # st.dataframe(fixtures)
     # container for round 1 games
     with st.container():
+        predictions = []
         for index, row in fixtures.iterrows():
+            fixture_id = row['FIXTURE_ID']
             date = row['FIXTURE_DATE'][0:10]
-            group = row['group']
+            group = "GROUP " + row['group']
             home_team = row['TEAMS_HOME_NAME']
             away_team = row['TEAMS_AWAY_NAME']
             # user prediction
-            st.text_input(f"{date} | {group} -- {home_team} : {away_team}")
-
+            st.write(f"{date} | {group} -- {home_team} : {away_team}")
+            home_goals = st.number_input(f"{home_team}", min_value=0, max_value=13, value=int)
+            away_goals = st.number_input("{away_team}", min_value=0, max_value=13, value=int\
+                , key="a"+row['FIXTURE_ID'])
+            prediction = {'fixture_id': fixture_id, 'home': home_goals, 'away': away_goals}
+            predictions.append(prediction)
+        if st.button('Submit'):
+            with my_cnx.cursor() as my_cur:
+                for p in predictions:
+                    p_home = prediction['home']
+                    p_away = prediction['away']
+                    p_fix_id = prediction['fixture_id']
+                    p_entry = insert_prediction(user_id, fixture_id, p_home, p_away)
+    
     my_cnx.close()
 
 # Checking user bets
