@@ -41,13 +41,12 @@ def create_user(username, email):
 # Give fixtures for a given round
 def get_fixtures(round):
     with my_cnx.cursor() as my_cur:
-        fixtures = my_cur.execute(f"select a.fixture_id, a.fixture_date, \
-            a.teams_home_name, a.teams_away_name, b.group \
+        fixtures = my_cur.execute(f"select * \
                 from fifa_world_cup_2022 a \
-                    where league_round = '{round}' \
                         inner join groups b \
                             on b.team = a.teams_home_name \
-                                order by a.fixture_date asc;").fetch_pandas_all()
+                                where a.league_round = '{round}' \
+                                    order by a.fixture_date asc;").fetch_pandas_all()
         return fixtures
 
 # Get Groups
