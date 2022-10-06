@@ -85,8 +85,11 @@ if st.button('Make New Predictions'):
             away_team = row['TEAMS_AWAY_NAME']
             # user prediction
             st.write(f"{date} | {group} -- {home_team} : {away_team}")
-            home_goals = st.number_input(f"{home_team}", min_value=0, max_value=13)
-            away_goals = st.number_input(f"{away_team}", min_value=0, max_value=13)
+            home, away = st.columns(2)
+            with home:
+                home_goals = st.number_input(f"{home_team}", min_value=0, max_value=13)
+            with away:
+                away_goals = st.number_input(f"{away_team}", min_value=0, max_value=13)
             prediction = {'fixture_id': fixture_id, 'home': home_goals, 'away': away_goals}
             predictions.append(prediction)
         if st.button('Submit'):
