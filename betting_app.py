@@ -23,14 +23,19 @@ username = st.text_input('Your Username', max_chars=20)
 email = st.text_input('Your Email', max_chars=100)
 
 # Create user in Snowflake
-def create_user(username):
+def create_user(username, email):
     with my_cnx.cursor() as my_cur:
-        # check if user exists already and if it is, return user id
-        my_cur.execute(f"insert into users (username, email)\
-            values ('{username}','{email}');")
-        user_id = my_cur.execute(f"select id from users\
-            where username = '{username}'\
-                and email = '{email}';")
+        # check if user exists already, if not create user
+        existing_user_id = my_cur.execute(f"select id from users \
+            where email = '{email}';")
+        if existing_user_id:
+            user_id = existing_user_id
+        else:
+            my_cur.execute(f"insert into users (username, email)\
+                values ('{username}','{email}');")
+            user_id = my_cur.execute(f"select id from users\
+                where username = '{username}'\
+                    and email = '{email}';")
         return user_id
 
 # Give fixtures for a given round
@@ -51,7 +56,7 @@ def get_group(home_team):
 # Listing all fixtures of the current round depending on current date
 if st.button('Submit New Predictions'):
     my_cnx = cnx.connect(**st.secrets["snowflake"])
-    user_id = create_user(username)
+    user_id = create_user(username, email)
     fixtures = get_fixtures('Group Stage - 1')
     # st.dataframe(fixtures)
     # container for round 1 games
