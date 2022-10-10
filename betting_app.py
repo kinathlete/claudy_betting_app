@@ -28,7 +28,7 @@ def create_user(username, email):
         # check if user exists already, if not create user
         existing_user_id = my_cur.execute(f"select id from users \
             where email = '{email}';")
-        if existing_user_id:
+        if existing_user_id is not None:
             user_id = existing_user_id
         else:
             my_cur.execute(f"insert into users (username, email)\
