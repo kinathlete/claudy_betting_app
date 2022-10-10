@@ -2,6 +2,9 @@ import streamlit as st
 import snowflake.connector as cnx
 import pandas as pd
 
+# Submit button
+submitted = ""
+
 st.title('PREDICT ON FIFA WORLD CUP 2022!')
 
 st.info('Predictions are accepted now. Scroll down to submit your predictions.')
