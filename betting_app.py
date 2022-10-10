@@ -21,6 +21,7 @@ st.image(htp1, caption='Groups of FIFA World Cup 2022 | Source: sportco.io')
 # Provide a username
 username = st.text_input('Your Username', max_chars=20)
 email = st.text_input('Your Email', max_chars=100)
+password = st.text_input('Password', max_chars=20)
 
 # Create user in Snowflake
 def create_user(username, email):
