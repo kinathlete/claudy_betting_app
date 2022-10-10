@@ -95,8 +95,6 @@ if st.button('Make New Predictions'):
 
         # Submit form
         submitted = st.form_submit_button("Submit")
-        if submitted:
-            st.write("slider", home_goals, "checkbox", away_goals)
         # if st.button('Submit'):
         #     with my_cnx.cursor() as my_cur:
         #         for p in predictions:
@@ -106,6 +104,9 @@ if st.button('Make New Predictions'):
         #             p_entry = insert_prediction(user_id, fixture_id, p_home, p_away)
     
     my_cnx.close()
+
+if submitted:
+    st.write("slider", home_goals, "checkbox", away_goals)
 
 # Checking user bets
 if st.button('Show my Predictions'):
