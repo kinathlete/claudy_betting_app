@@ -29,7 +29,8 @@ def create_user(username, email):
         # check if user exists already, if not create user
         existing_user_id = my_cur.execute(f"select id from users \
             where email = '{email}';")
-        if existing_user_id:
+        print(existing_user_id)
+        if existing_user_id is not None:
             user_id = existing_user_id
         else:
             my_cur.execute(f"insert into users (username, email)\
@@ -76,8 +77,7 @@ if st.button('Make New Predictions'):
     fixtures = get_fixtures('Group Stage - 1')
     # st.dataframe(fixtures)
     # container for round 1 games
-    with st.container():
-        predictions = []
+    with st.form('user_predictions_results'):
         for index, row in fixtures.iterrows():
             fixture_id = row['FIXTURE_ID']
             date = row['FIXTURE_DATE'][0:10]
@@ -92,15 +92,18 @@ if st.button('Make New Predictions'):
                     home_goals = st.number_input(f"{home_team}", min_value=0, max_value=13)
                 with away:
                     away_goals = st.number_input(f"{away_team}", min_value=0, max_value=13)
-                prediction = {'fixture_id': fixture_id, 'home': home_goals, 'away': away_goals}
-                predictions.append(prediction)
-        if st.button('Submit'):
-            with my_cnx.cursor() as my_cur:
-                for p in predictions:
-                    p_home = prediction['home']
-                    p_away = prediction['away']
-                    p_fix_id = prediction['fixture_id']
-                    p_entry = insert_prediction(user_id, fixture_id, p_home, p_away)
+
+        # Submit form
+        submitted = st.form_submit_button("Submit")
+        if submitted:
+            st.write("slider", home_goals, "checkbox", away_goals)
+        # if st.button('Submit'):
+        #     with my_cnx.cursor() as my_cur:
+        #         for p in predictions:
+        #             p_home = prediction['home']
+        #             p_away = prediction['away']
+        #             p_fix_id = prediction['fixture_id']
+        #             p_entry = insert_prediction(user_id, fixture_id, p_home, p_away)
     
     my_cnx.close()
 
