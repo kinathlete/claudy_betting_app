@@ -20,10 +20,6 @@ st.image(htp1, caption='Groups of FIFA World Cup 2022 | Source: sportco.io')
 # st.text('The rules are:')
 # st.text('5 points for the correct World Cup Winner!')
 
-# User registration
-hashed_passwords = stauth.Hasher(['kinya1997', 'philya1919']).generate()
-print(hashed_passwords)
-
 # User authentication
 with open('config/config.yaml') as file:
     config = yaml.load(file, Loader=yaml.SafeLoader)
@@ -38,8 +34,14 @@ authenticator = stauth.Authenticate(
 
 name, authentication_status, username = authenticator.login('Login', 'main')
 
-if authentication_status == True:
-    authenticator.logout("logout","main")
+if authentication_status:
+    authenticator.logout('Logout', 'main')
+    st.write(f'Welcome *{name}*')
+    st.title('Some content')
+elif authentication_status == False:
+    st.error('Username/password is incorrect')
+elif authentication_status == None:
+    st.warning('Please enter your username and password')
 
 # Give fixtures for a given round
 def get_fixtures(round):
