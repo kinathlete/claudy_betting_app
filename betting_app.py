@@ -26,9 +26,9 @@ print(hashed_passwords)
 
 # User authentication
 with open('config/config.yaml') as file:
-    config = yaml.load(file, Loader=SafeLoader)
+    config = yaml.load(file, Loader=yaml.SafeLoader)
 
-authenticator = Authenticate(
+authenticator = stauth.Authenticate(
     config['credentials'],
     config['cookie']['name'],
     config['cookie']['key'],
@@ -37,6 +37,9 @@ authenticator = Authenticate(
 )
 
 name, authentication_status, username = authenticator.login('Login', 'main')
+
+if authentication_status == True:
+    authenticator.logout("logout","main")
 
 # Give fixtures for a given round
 def get_fixtures(round):
