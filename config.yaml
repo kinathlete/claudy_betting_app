@@ -1,0 +1,18 @@
+credentials:
+  usernames:
+    kintscher:
+      email: marcel.kintscher@claudyconsulting.com
+      name: Marcel Kintscher
+      password: '$2b$12$yv6K.yUDRcD6E2skQXinQeXsWFvSM4ZcahYgltxMcrGZ2nkMvu1nC'
+    philippe:
+      email: philippe.fuhrer@hotmail.com
+      name: Philippe Fuhrer
+      password: '$2b$12$1O7GHsSouG0hhyItTNr4zu3Q5h6FDde7R3I4IhFt4C14LXFvBkRB2'
+cookie:
+  expiry_days: 10
+  key: xejcwcbz34648bfcez637
+  name: fifafifapredictionscookie
+preauthorized:
+  emails:
+  - marcel.kintscher@claudyconsulting.com
+  - philippe.fuhrer@hotmail.com
