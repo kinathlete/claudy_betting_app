@@ -24,7 +24,7 @@ st.image(htp1, caption='Groups of FIFA World Cup 2022 | Source: sportco.io')
 hashed_passwords = stauth.Hasher(['kinya1997', 'philya1919']).generate()
 print(hashed_passwords)
 
-with open('../config.yaml') as file:
+with open('config/config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
 authenticator = stauth.Authenticate(
