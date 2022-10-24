@@ -25,7 +25,7 @@ hashed_passwords = stauth.Hasher(['kinya1997', 'philya1919']).generate()
 print(hashed_passwords)
 
 with open('config/config.yaml') as file:
-    config = yaml.load(file, Loader=SafeLoader)
+    config = yaml.safe_load(file)
 
 authenticator = stauth.Authenticate(
     config['credentials'],
