@@ -84,19 +84,7 @@ if authentication_status:
                     with home:
                         home_goals = st.number_input(f"{home_team}", min_value=0, max_value=13)
                     with away:
-                        away_goals = st.number_input(f"{away_team}", min_value=0, max_value=13)
-
-            # Submit form
-            submitted = st.form_submit_button("Submit")
-            if submitted:
-                st.write("slider", home_goals, "checkbox", away_goals)
-            # if st.button('Submit'):
-            #     with my_cnx.cursor() as my_cur:
-            #         for p in predictions:
-            #             p_home = prediction['home']
-            #             p_away = prediction['away']
-            #             p_fix_id = prediction['fixture_id']
-            #             p_entry = insert_prediction(user_id, fixture_id, p_home, p_away)
+                        away_goals = st.number_input(f"{away_team}", min_value=0, max_value=13)x
         
         my_cnx.close()
 
