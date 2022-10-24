@@ -84,7 +84,7 @@ if authentication_status:
                     with home:
                         home_goals = st.number_input(f"{home_team}", min_value=0, max_value=13)
                     with away:
-                        away_goals = st.number_input(f"{away_team}", min_value=0, max_value=13)x
+                        away_goals = st.number_input(f"{away_team}", min_value=0, max_value=13)
         
         my_cnx.close()
 
