@@ -1,6 +1,6 @@
 import streamlit as st
 import streamlit_authenticator as stauth
-import snowflake.connector as cnx
+# import snowflake.connector as cnx
 import pandas as pd
 import yaml
 
@@ -21,15 +21,21 @@ st.image(htp1, caption='Groups of FIFA World Cup 2022 | Source: sportco.io')
 # st.text('5 points for the correct World Cup Winner!')
 
 # User authentication
-names = ['John Smith','Rebecca Briggs']
-usernames = ['jsmith','rbriggs']
-passwords = ['123','456']
+hashed_passwords = stauth.Hasher(['kinya1997', 'philya1919']).generate()
+print(hashed_passwords)
 
-hashed_passwords = stauth.Hasher(passwords).generate()
+with open('../config.yaml') as file:
+    config = yaml.load(file, Loader=SafeLoader)
 
-authenticator = stauth.Authenticate(names,usernames,hashed_passwords,'cookie_name', 'signature_key',cookie_expiry_days=10)
+authenticator = stauth.Authenticate(
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days'],
+    config['preauthorized']
+)
 
-name, authentication_status = authenticator.login('Login','main')
+name, authentication_status, username = authenticator.login('Login', 'main')
 
 if authentication_status:
     # Predictions app

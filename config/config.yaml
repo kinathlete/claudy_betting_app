@@ -3,11 +3,11 @@ credentials:
     kintscher:
       email: marcel.kintscher@claudyconsulting.com
       name: Marcel Kintscher
-      password: 'kinya1997'
+      password: '$2b$12$jlCCT1VolHik3ZOmF90CiO4qJXy18CiGL2xrsZh9wN7LvqmcVw1ge'
     philippe:
       email: philippe.fuhrer@hotmail.com
       name: Philippe Fuhrer
-      password: 'philya1919'
+      password: '$2b$12$uGGPyJKc7flYNo2Z4WvmK.j.VWlWtnga3huliVLmwc8hzTOQVvaDa'
 cookie:
   expiry_days: 10
   key: xejcwcbz34648bfcez637
