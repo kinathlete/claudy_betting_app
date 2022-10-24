@@ -1,2 +1,2 @@
 snowflake-connector-python
-streamlit_authenticator
+streamlit-authenticator
