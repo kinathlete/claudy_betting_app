@@ -1,6 +1,6 @@
 import streamlit as st
 import streamlit_authenticator as stauth
-# import snowflake.connector as cnx
+import snowflake.connector as cnx
 import pandas as pd
 import yaml
 
