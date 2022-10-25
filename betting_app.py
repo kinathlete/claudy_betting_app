@@ -72,9 +72,9 @@ if authentication_status:
     if st.button('Make New Predictions'):
         my_cnx = cnx.connect(**st.secrets["snowflake"])
         fixtures = get_fixtures('Group Stage - 1')
+        predictions = {}
         # form
         with st.form('user_predictions_results'):
-            predictions = {}
             for index, row in fixtures.iterrows():
                 fixture_id = row['FIXTURE_ID']
                 date = row['FIXTURE_DATE'][0:10]
