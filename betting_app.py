@@ -48,8 +48,8 @@ if authentication_status:
                                 on b.team = a.teams_home_name \
                                     where a.league_round = '{round}' \
                                         order by a.fixture_date asc;")
-        print(fixtures)
-        return fixtures
+            print(fixtures)
+            return fixtures
 
     # Insert prediction
     def insert_prediction(user_id, fixture_id, p_home, p_away):
