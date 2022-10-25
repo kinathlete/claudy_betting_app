@@ -102,10 +102,10 @@ if authentication_status:
             # Every form must have a submit button.
             submitted = st.form_submit_button("Submit")
 
-    if submitted:
-        st.write('Your Predictions:')
-        st.write(home_goals+" "+away_goals)
-        my_cnx.close()        
+            if submitted:
+                st.write('Your Predictions:')
+                st.write(home_goals+" "+away_goals)
+                my_cnx.close()        
 
 elif authentication_status == False:
     st.error('Username/password is incorrect')
