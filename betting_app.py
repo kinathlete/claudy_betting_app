@@ -95,8 +95,7 @@ if authentication_status:
         if submitted:
             st.write('Your Predictions:')
             st.write(predictions)
-    
-    my_cnx.close()
+            my_cnx.close()    
 
 elif authentication_status == False:
     st.error('Username/password is incorrect')
