@@ -21,8 +21,8 @@ st.image(htp1, caption='Groups of FIFA World Cup 2022 | Source: sportco.io')
 # st.text('5 points for the correct World Cup Winner!')
 
 # User authentication
-hashed_passwords = stauth.Hasher(['kinya1997', 'philya1919']).generate()
-print(hashed_passwords)
+# hashed_passwords = stauth.Hasher(['kinya1997', 'philya1919']).generate()
+# print(hashed_passwords)
 
 with open('config/config.yaml') as file:
     config = yaml.safe_load(file)
@@ -84,15 +84,14 @@ if authentication_status:
                 away_team = row['TEAMS_AWAY_NAME']
                 prediction = {}
                 prediction[f'{fixture_id}'] = {}
-                with st.container():
-                    # user prediction
-                    st.write(f"{date} | {group} -- {home_team} : {away_team}")
-                    home, away = st.columns(2)
-                    with home:
-                        prediction[f'{fixture_id}']['home_goals'] = st.number_input(f"{home_team}", min_value=0, max_value=13)
-                    with away:
-                        prediction[f'{fixture_id}']['away_goals'] = st.number_input(f"{away_team}", min_value=0, max_value=13)
-                    predictions[f'{username}'] = prediction
+                # user prediction
+                st.write(f"{date} | {group} -- {home_team} : {away_team}")
+                home, away = st.columns(2)
+                with home:
+                    prediction[f'{fixture_id}']['home_goals'] = st.number_input(f"{home_team}", min_value=0, max_value=13)
+                with away:
+                    prediction[f'{fixture_id}']['away_goals'] = st.number_input(f"{away_team}", min_value=0, max_value=13)
+                predictions[f'{username}'] = prediction
             # Every form must have a submit button.
             submitted = st.form_submit_button("Submit")
             if submitted:
