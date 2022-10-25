@@ -81,27 +81,29 @@ if authentication_status:
         predictions = {}
         # form
         with st.form('user_predictions_results'):
-            for index, row in fixtures.iterrows():
-                fixture_id = row['FIXTURE_ID']
-                date = row['FIXTURE_DATE'][0:10]
-                group = "GROUP " + row['group']
-                home_team = row['TEAMS_HOME_NAME']
-                away_team = row['TEAMS_AWAY_NAME']
-                prediction = {}
-                prediction[f'{fixture_id}'] = {}
-                # user prediction
-                st.write(f"{date} | {group} -- {home_team} : {away_team}")
-                home, away = st.columns(2)
-                with home:
-                    prediction[f'{fixture_id}']['home_goals'] = st.number_input(f"{home_team}", min_value=0, max_value=13)
-                with away:
-                    prediction[f'{fixture_id}']['away_goals'] = st.number_input(f"{away_team}", min_value=0, max_value=13)
-                predictions[f'{username}'] = prediction
+            home_goals = st.number_input('home_team', min_value=0, max_value=13)
+            away_goals = st.number_input('away_team', min_value=0, max_value=13)
+            # for index, row in fixtures.iterrows():
+            #     fixture_id = row['FIXTURE_ID']
+            #     date = row['FIXTURE_DATE'][0:10]
+            #     group = "GROUP " + row['group']
+            #     home_team = row['TEAMS_HOME_NAME']
+            #     away_team = row['TEAMS_AWAY_NAME']
+            #     prediction = {}
+            #     prediction[f'{fixture_id}'] = {}
+            #     # user prediction
+            #     st.write(f"{date} | {group} -- {home_team} : {away_team}")
+            #     home, away = st.columns(2)
+            #     with home:
+            #         prediction[f'{fixture_id}']['home_goals'] = st.number_input(f"{home_team}", min_value=0, max_value=13)
+            #     with away:
+            #         prediction[f'{fixture_id}']['away_goals'] = st.number_input(f"{away_team}", min_value=0, max_value=13)
+            #     predictions[f'{username}'] = prediction
             # Every form must have a submit button.
             submitted = st.form_submit_button("Submit")
             if submitted:
                 st.write('Your Predictions:')
-                st.write(predictions)
+                st.write(home_goals+" "+away_goals)
                 my_cnx.close()        
 
 elif authentication_status == False:
