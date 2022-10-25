@@ -79,7 +79,6 @@ if authentication_status:
         my_cnx = init_cnx()
         fixtures = get_fixtures('Group Stage - 1')
         predictions = {}
-        prediction = {}
         # form
         with st.form('user_predictions_results'):
             for index, row in fixtures.iterrows():
@@ -88,18 +87,19 @@ if authentication_status:
                 group = "GROUP " + row['group']
                 home_team = row['TEAMS_HOME_NAME']
                 away_team = row['TEAMS_AWAY_NAME']
+                prediction = {}
                 prediction[f'{fixture_id}'] = {}
                 # user prediction
                 st.write(f"{date} | {group} -- {home_team} : {away_team}")
-                # home, away = st.columns(2)
-                # with home:
-                prediction[f'{fixture_id}']['home_goals'] = st.number_input(f"{home_team}", min_value=0, max_value=13)
-                # with away:
-                prediction[f'{fixture_id}']['away_goals'] = st.number_input(f"{away_team}", min_value=0, max_value=13)
+                home, away = st.columns(2)
+                with home:
+                    prediction[f'{fixture_id}']['home_goals'] = st.number_input(f"{home_team}", min_value=0, max_value=13)
+                with away:
+                    prediction[f'{fixture_id}']['away_goals'] = st.number_input(f"{away_team}", min_value=0, max_value=13)
+                predictions[f'{username}'] = prediction
             # Every form must have a submit button.
             submitted = st.form_submit_button("Submit")
             if submitted:
-                predictions[f'{username}'] = prediction
                 st.write('Your Predictions:')
                 st.write(predictions)
                 my_cnx.close()        
