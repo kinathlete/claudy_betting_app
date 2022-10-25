@@ -91,11 +91,11 @@ if authentication_status:
                 prediction[f'{fixture_id}'] = {}
                 # user prediction
                 st.write(f"{date} | {group} -- {home_team} : {away_team}")
-                home, away = st.columns(2)
-                with home:
-                    prediction[f'{fixture_id}']['home_goals'] = st.number_input(f"{home_team}", min_value=0, max_value=13)
-                with away:
-                    prediction[f'{fixture_id}']['away_goals'] = st.number_input(f"{away_team}", min_value=0, max_value=13)
+                # home, away = st.columns(2)
+                # with home:
+                prediction[f'{fixture_id}']['home_goals'] = st.number_input(f"{home_team}", min_value=0, max_value=13)
+                # with away:
+                prediction[f'{fixture_id}']['away_goals'] = st.number_input(f"{away_team}", min_value=0, max_value=13)
             # Every form must have a submit button.
             submitted = st.form_submit_button("Submit")
             if submitted:
