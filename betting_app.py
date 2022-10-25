@@ -1,7 +1,6 @@
 import streamlit as st
 import streamlit_authenticator as stauth
 import snowflake.connector as cnx
-import pandas as pd
 import yaml
 
 st.title('MAKE YOUR PREDICTIONS FOR FIFA WORLD CUP 2022!')
@@ -48,7 +47,6 @@ if authentication_status:
                                 on b.team = a.teams_home_name \
                                     where a.league_round = '{round}' \
                                         order by a.fixture_date asc;").fetch_pandas_all()
-            print(fixtures)
             return fixtures
 
     # Insert prediction
@@ -75,29 +73,29 @@ if authentication_status:
         my_cnx = cnx.connect(**st.secrets["snowflake"])
         fixtures = get_fixtures('Group Stage - 1')
         print(fixtures)
-        # # form
-        # with st.form('user_predictions_results'):
-        #     predictions = {}
-        #     for index, row in fixtures.iterrows():
-        #         fixture_id = row['FIXTURE_ID']
-        #         date = row['FIXTURE_DATE'][0:10]
-        #         group = "GROUP " + row['group']
-        #         home_team = row['TEAMS_HOME_NAME']
-        #         away_team = row['TEAMS_AWAY_NAME']
-        #         prediction = {}
-        #         prediction[f'{fixture_id}'] = {}
-        #         # user prediction
-        #         st.write(f"{date} | {group} -- {home_team} : {away_team}")
-        #         home, away = st.columns(2)
-        #         with home:
-        #             prediction[f'{fixture_id}']['home_goals'] = st.number_input(f"{home_team}", min_value=0, max_value=13)
-        #         with away:
-        #             prediction[f'{fixture_id}']['away_goals'] = st.number_input(f"{away_team}", min_value=0, max_value=13)
-        #         predictions[f'{username}'] = prediction
-        #     # Every form must have a submit button.
-        #     submitted = st.form_submit_button("Submit")
-        #     if submitted:
-        #         print(predictions)
+        # form
+        with st.form('user_predictions_results'):
+            predictions = {}
+            for index, row in fixtures.iterrows():
+                fixture_id = row['FIXTURE_ID']
+                date = row['FIXTURE_DATE'][0:10]
+                group = "GROUP " + row['group']
+                home_team = row['TEAMS_HOME_NAME']
+                away_team = row['TEAMS_AWAY_NAME']
+                prediction = {}
+                prediction[f'{fixture_id}'] = {}
+                # user prediction
+                st.write(f"{date} | {group} -- {home_team} : {away_team}")
+                home, away = st.columns(2)
+                with home:
+                    prediction[f'{fixture_id}']['home_goals'] = st.number_input(f"{home_team}", min_value=0, max_value=13)
+                with away:
+                    prediction[f'{fixture_id}']['away_goals'] = st.number_input(f"{away_team}", min_value=0, max_value=13)
+                predictions[f'{username}'] = prediction
+            # Every form must have a submit button.
+            submitted = st.form_submit_button("Submit")
+            if submitted:
+                print(predictions)
         
         my_cnx.close()
 
