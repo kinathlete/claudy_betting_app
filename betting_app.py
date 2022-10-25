@@ -94,7 +94,8 @@ if authentication_status:
             # Every form must have a submit button.
             submitted = st.form_submit_button("Submit")
             if submitted:
-                print(predictions)
+                st.write('Your Predictions:')
+                st.write(predictions)
         
         my_cnx.close()
 
