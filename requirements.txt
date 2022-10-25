@@ -1,2 +1,3 @@
 snowflake-connector-python
 streamlit-authenticator
+pyarrow==6.0.1

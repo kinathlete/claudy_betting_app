@@ -72,7 +72,6 @@ if authentication_status:
     if st.button('Make New Predictions'):
         my_cnx = cnx.connect(**st.secrets["snowflake"])
         fixtures = get_fixtures('Group Stage - 1')
-        print(fixtures)
         # form
         with st.form('user_predictions_results'):
             predictions = {}
