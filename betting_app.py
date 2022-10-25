@@ -47,7 +47,7 @@ if authentication_status:
                             inner join groups b \
                                 on b.team = a.teams_home_name \
                                     where a.league_round = '{round}' \
-                                        order by a.fixture_date asc;").fetch_pandas_all()
+                                        order by a.fixture_date asc;")
         print(fixtures)
         return fixtures
 
