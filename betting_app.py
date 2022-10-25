@@ -38,6 +38,12 @@ name, authentication_status, username = authenticator.login('Login', 'main')
 
 if authentication_status:
     # Predictions app
+    # Initialise Snowflake connection
+    def init_cnx():
+        return cnx.connect(
+        **st.secrets["snowflake"], client_session_keep_alive=True
+        )
+
     # Give fixtures for a given round
     def get_fixtures(round):
         with my_cnx.cursor() as my_cur:
@@ -69,11 +75,11 @@ if authentication_status:
             return new_entry
 
     # Listing all fixtures of the current round depending on current date
-    my_cnx = cnx.connect(**st.secrets["snowflake"])
-    fixtures = get_fixtures('Group Stage - 1')
     predictions = {}
     # form
     with st.form('user_predictions_results'):
+        my_cnx = init_cnx()
+        fixtures = get_fixtures('Group Stage - 1')
         for index, row in fixtures.iterrows():
             fixture_id = row['FIXTURE_ID']
             date = row['FIXTURE_DATE'][0:10]
